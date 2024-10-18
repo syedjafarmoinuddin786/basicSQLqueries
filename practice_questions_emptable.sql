@@ -1,21 +1,63 @@
-                                              SQL Queries
+     /*                                         SQL Queries                                */
 
-Write SQL Queries for the following:
+--  Write SQL Queries for the following:
 
-1) Display all the records in emp table.
-2) Display all the records in emp table where employee belongs to deptno 10.
-3) Display all the records in emp table where employee does not belong to deptno 30.
-4) Display total number of records in Emp table.
-5) Display emp table with salary descending order.
-6) Display first five records in employee table.
-7) Display all the records in emp table order by ascending deptno, descending salary.
-8) Display all employees those who were joined in year 1981.
-9) Display employee information who don’
-10) Display the records in emp table where MGR in 7698,7566 and sal should be greater then
-1500
-
-11) Display all employees where their salary is less then the Ford’s salary?
-12) Display all the records in EMP table along with the rowed.
+-- 1) Display all the records in emp table.
+-- query :
+select *
+from emp;
+-- 2) Display all the records in emp table where employee belongs to deptno 10.
+--query:
+select *
+from emp
+where deptno = 10;
+-- 3) Display all the records in emp table where employee does not belong to deptno 30.
+--query:
+select *
+from emp
+where deptno = 10;
+-- 4) Display total number of records in Emp table.
+--query:
+select count(*)
+from emp;
+-- 5) Display emp table with salary descending order.
+--query:
+select *
+from emp
+order by sal desc;
+-- 6) Display first five records in employee table.
+--query: here we should use a keyword "rownum" if it is in oracle , if it is MySQL use LIMIT and OFFSET 
+select *
+from emp
+where rownum <= 5;
+-- 7) Display all the records in emp table order by ascending deptno, descending salary.
+--query:
+select *
+from emp
+order by deptno asc,sal desc; 
+-- 8) Display all employees those who were joined in year 1981.
+--query:
+SELECT *
+FROM emp
+WHERE EXTRACT(YEAR FROM hiredate) = 1981;
+-- 9) Display employee information who don’
+--query:
+ -- this question is not there
+-- 10) Display the records in emp table where MGR in 7698,7566 and sal should be greater then 1500
+--query:
+select *
+from emp
+where (MGR = 7698 or MGR = 7566) and sal > 1500;
+-- 11) Display all employees where their salary is less then the Ford’s salary?
+--query:
+select *
+from emp e1 JOIN emp e2 
+ON e1.empno != e2.empno
+where e1.salary < e2.salary and e2.empno = 
+        
+-- 12) Display all the records in EMP table along with the rowed.
+--query:
+        
 13) Write a query to display current date.
 14) Display distinct job from emp table.
 15) Write a query that displays the employee’s names with the first letter capitalized and all other
