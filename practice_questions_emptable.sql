@@ -54,16 +54,55 @@ select *
 from emp e1 JOIN emp e2 
 ON e1.empno != e2.empno
 where e1.salary < e2.salary and e2.empno = 
-        
 -- 12) Display all the records in EMP table along with the rowed.
 --query:
-        
-13) Write a query to display current date.
-14) Display distinct job from emp table.
-15) Write a query that displays the employee’s names with the first letter capitalized and all other
-letters lowercase for all employees whose name starts with J, A, or M.
-16) Write a query to display the employee name, department name of all employees who earn a
-commission.
+select rownum,emp.*
+from emp;
+-- 13) Write a query to display current date.
+--query:
+SELECT SYSDATE FROM DUAL;
+-- for date and time 
+SELECT TO_CHAR(SYSDATE, 'DD-MON-YYYY HH24:MI:SS') AS CURRENT_DATETIME
+FROM DUAL;
+/*    The SQL query:
+
+sql
+Copy code
+SELECT SYSDATE FROM DUAL;
+retrieves the current system date and time from the Oracle database. Here’s a detailed explanation of each part of the query:
+
+1. SELECT
+This is the SQL keyword used to specify the columns or expressions that you want to retrieve from a table or view. In this case, it’s selecting the function SYSDATE, which returns the current system date and time.
+2. SYSDATE
+SYSDATE is an Oracle-specific function that returns the current system date and time. The returned value includes both the date and the time (in the format DD-MM-YYYY HH:MI:SS by default).
+
+Example: If today is October 21, 2024, at 2:30 PM, SYSDATE would return something like 21-OCT-2024 14:30:00.
+
+This function does not take any arguments, and it always reflects the database server's date and time, not the client’s local time.
+
+3. FROM DUAL
+DUAL is a special dummy table in Oracle used to perform operations that don’t require data from an actual table.
+
+The DUAL table has exactly one row and one column. It's commonly used when you need to perform a function or calculation, but don’t need to query from any real data source.
+
+The query could be written as SELECT SYSDATE in other databases like SQL Server or MySQL, but in Oracle, the FROM DUAL clause is necessary because SELECT statements must always specify a source.*/
+
+-- 14) Display distinct job from emp table.
+--query:
+SELECT DISTINCT JOB 
+FROM EMP
+-- 15) Write a query that displays the employee’s names with the first letter capitalized and all other
+-- letters lowercase for all employees whose name starts with J, A, or M.
+--query:
+SELECT INITCAP(ENAME) AS EMPLOYEE_NAME
+FROM EMP
+WHERE ENAME LIKE 'J%' 
+   OR ENAME LIKE 'A%' 
+   OR ENAME LIKE 'M%';
+
+-- 16) Write a query to display the employee name, department name of all employees who earn a
+-- commission.
+-- query:
 
 17) Display the empno, ename, sal, and salary increased by 15%.
 18) Display employee names and corresponding manager names.
